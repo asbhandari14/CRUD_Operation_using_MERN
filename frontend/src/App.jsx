@@ -11,14 +11,16 @@ import UpdateExistingUser from './Pages/UpdateExistingUser';
 
 const App = () => {
 
+  let Backend_URL = "http://localhost:8000"
+
   return (
     <>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/show" element={<ShowAllUser />} />
-          <Route path="/update/:userId" element={<UpdateExistingUser />} />
+          <Route path="/" element={<Home url={Backend_URL}/>} />
+          <Route path="/show" element={<ShowAllUser url={Backend_URL}/>} />
+          <Route path="/update/:userId" element={<UpdateExistingUser url={Backend_URL} />} />
         </Routes>
       </BrowserRouter>
     </>

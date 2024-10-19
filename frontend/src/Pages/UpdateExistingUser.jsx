@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
 
-const UpdateExistingUser = () => {
+const UpdateExistingUser = ({url}) => {
     const [updatedUser, setUpdatedUser] = useState({ name : "", email : "", age : ""});
     const [loading, setLoading] = useState(false);
     const params = useParams();
@@ -28,7 +28,7 @@ const UpdateExistingUser = () => {
         e.preventDefault();
         const notify = () => toast.success("User is successfully updated ");
         try {
-            const response = await axios.put(`http://localhost:8000/user/update/${userId}`, updatedUser, {withCredentials: true, headers : {"Content-Type" : "application/json"}})
+            const response = await axios.put(`${url}/user/update/${userId}`, updatedUser, {withCredentials: true, headers : {"Content-Type" : "application/json"}})
 
             if(response.data.success){
                 setLoading(false);

@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-const Home = () => {
+const Home = ({url}) => {
   const [createUser, setCreateUser] = useState({
     name: "",
     email: "",
@@ -30,7 +30,7 @@ const Home = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await axios.post("http://localhost:8000/user/create", createUser, { headers: { "Content-Type": "application/json" }, withCredentials: true });
+      const response = await axios.post(`${url}/user/create`, createUser, { headers: { "Content-Type": "application/json" }, withCredentials: true });
 
       if (response.data.success) {
         setLoading(false);

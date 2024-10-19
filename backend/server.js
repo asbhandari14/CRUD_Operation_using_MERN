@@ -15,7 +15,7 @@ const PORT = process.env.PORT;
 // This Middleware is use to prevent from the Browser Cross Origin Resourse Error 
 app.use(cors({
     methods: "GET, POST, PUT, PATCH, DELETE",
-    origin : "http://localhost:5173",
+    origin : process.env.FRONTEND_URL,
     credentials : true
 }))
 

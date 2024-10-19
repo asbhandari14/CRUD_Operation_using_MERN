@@ -7,7 +7,7 @@ import { TbLoader2 } from "react-icons/tb";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ShowAllUser = () => {
+const ShowAllUser = ({url}) => {
     const [allUserData, setAllUserData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);
@@ -18,7 +18,7 @@ const ShowAllUser = () => {
     const getAllUser_from_API=async()=>{
         try {
             setLoading(true)
-            const response = await axios.get(`http://localhost:8000/user/read?page=${page}`, { withCredentials: true });
+            const response = await axios.get(`${url}/user/read?page=${page}`, { withCredentials: true });
             console.log(response)
 
             if (response.data.success) {
@@ -37,7 +37,7 @@ const ShowAllUser = () => {
         try {
             const notify = () => toast.success("User is successfully delete ");
             setLoading(true)
-            const response = await axios.delete(`http://localhost:8000/user/delete/${userId}`, { withCredentials: true })
+            const response = await axios.delete(`${url}/user/delete/${userId}`, { withCredentials: true })
 
             if (response.data.success) {
                 setLoading(false);
